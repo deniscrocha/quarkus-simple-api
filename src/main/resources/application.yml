@@ -1,0 +1,28 @@
+quarkus:
+    datasource:
+        db-kind: mysql
+        username: quarkus
+        password: quarkus
+        jdbc: { url: jdbc:mysql://localhost:3306/quarkus }
+    liquibase:
+        migrate-at-start: true
+        change-log: /liquibase/liquibase-changelog.yml
+    log:
+        category:
+            "liquibase":
+                level: INFO
+    native:
+        resources:
+            includes: publicKey.pem
+mp:
+    jwt:
+        verify:
+            # TODO: Move issues to ENV var
+            issuer: QUARKUS-SIMPLE-API
+            publickey:
+                location: publicKey.pem
+smallrye:
+    jwt:
+        sign:
+            key:
+                location: rsaPrivateKey.pem
