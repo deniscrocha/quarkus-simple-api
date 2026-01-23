@@ -1,10 +1,14 @@
-package rocha.denis.mapper;
+package rocha.denis.mapper.user;
 
 import io.quarkus.elytron.security.common.BcryptUtil;
 import lombok.experimental.UtilityClass;
 import rocha.denis.domain.entities.User;
 import rocha.denis.dto.auth.RegisterUserRequestDto;
 import rocha.denis.dto.auth.RegisterUserResponseDto;
+import rocha.denis.dto.user.UserDto;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @UtilityClass
 public class RegisterUserMapper {
@@ -14,14 +18,18 @@ public class RegisterUserMapper {
             .username(requestDto.getUsername())
             .email(requestDto.getEmail())
             .password(BcryptUtil.bcryptHash(requestDto.getPassword()))
+            .roles(List.of())
+            .isActive(true)
+            .creationDate(LocalDateTime.now())
+            .modificationDate(LocalDateTime.now())
             .build();
     }
 
-    public RegisterUserResponseDto toResponse(User user) {
+    public RegisterUserResponseDto toResponse(UserDto dto) {
         return RegisterUserResponseDto.builder()
-            .id(user.getId())
-            .email(user.getEmail())
-            .username(user.getUsername())
+            .id(dto.getId())
+            .email(dto.getEmail())
+            .username(dto.getUsername())
             .build();
     }
 }

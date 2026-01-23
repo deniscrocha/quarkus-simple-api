@@ -1,15 +1,29 @@
 databaseChangeLog:
-    - changeSet:
-          id: create-user-table
-          author: denis.rocha
-          changes:
-              - sqlFile:
-                    path: user/create-user-table.sql
-                    relativeToChangelogFile: true
-    - changeSet:
-          id: insert-first-user
-          author: denis.rocha
-          changes:
-              - sqlFile:
-                    path: user/insert-first-user.sql
-                    relativeToChangelogFile: true
+    -   changeSet:
+            id: create-user-table
+            author: denis.rocha
+            changes:
+                -   sqlFile:
+                        path: user/create-user-table.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: insert-first-user
+            author: denis.rocha
+            changes:
+                -   sqlFile:
+                        path: user/insert-first-user.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: create-user-roles-table
+            author: denis.rocha
+            changes:
+                -   sqlFile:
+                        path: user/create-user-roles-table.sql
+                        relativeToChangelogFile: true
+    -   changeSet:
+            id: insert-roles-first-user
+            author: denis.rocha
+            changes:
+                -   sqlFile:
+                        path: user/insert-roles-first-user.sql
+                        relativeToChangelogFile: true

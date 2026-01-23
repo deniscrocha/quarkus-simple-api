@@ -14,11 +14,15 @@ quarkus:
     native:
         resources:
             includes: publicKey.pem
+jwt:
+    issuer: QUARKUS-SIMPLE-API
+    token-duration-hours: 1
+
 mp:
     jwt:
         verify:
             # TODO: Move issues to ENV var
-            issuer: QUARKUS-SIMPLE-API
+            issuer: ${jwt.issuer:QUARKUS-SIMPLE-API}
             publickey:
                 location: publicKey.pem
 smallrye:
